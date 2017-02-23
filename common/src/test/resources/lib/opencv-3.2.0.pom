@@ -5,6 +5,5 @@
   <groupId>org.opencv</groupId>
   <artifactId>opencv</artifactId>
   <version>3.2.0</version>
-  <classifier>win</classifier>
   <description>POM was created by Sonatype Nexus</description>
 </project>

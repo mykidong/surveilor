@@ -45,7 +45,7 @@
                             <classifier>centos</classifier>
                             <packaging>jar</packaging>
                             <file>${basedir}/src/test/resources/lib/opencv-3.2.0-centos.jar</file>
-                            <pomFile>${basedir}/src/test/resources/lib/opencv-3.2.0-centos.pom</pomFile>
+                            <pomFile>${basedir}/src/test/resources/lib/opencv-3.2.0.pom</pomFile>
                         </configuration>
                     </execution>
 					<execution>
@@ -61,7 +61,7 @@
                             <classifier>win</classifier>
                             <packaging>jar</packaging>
                             <file>${basedir}/src/test/resources/lib/opencv-3.2.0-win.jar</file>
-                            <pomFile>${basedir}/src/test/resources/lib/opencv-3.2.0-win.pom</pomFile>
+                            <pomFile>${basedir}/src/test/resources/lib/opencv-3.2.0.pom</pomFile>
                         </configuration>
                     </execution>
                 </executions>
