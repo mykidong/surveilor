@@ -41,11 +41,10 @@
                         <configuration>
                             <groupId>org.opencv</groupId>
                             <artifactId>opencv</artifactId>
-                            <version>${opencv.version}</version>
-                            <classifier>centos</classifier>
+                            <version>${opencv.version.prefix}.${opencv.os}</version>
                             <packaging>jar</packaging>
-                            <file>${basedir}/src/test/resources/lib/opencv-3.2.0-centos.jar</file>
-                            <pomFile>${basedir}/src/test/resources/lib/opencv-3.2.0.pom</pomFile>
+                            <file>${basedir}/src/test/resources/lib/opencv-3.2.0.centos.jar</file>
+                            <pomFile>${basedir}/src/test/resources/lib/opencv-3.2.0.centos.pom</pomFile>
                         </configuration>
                     </execution>
 					<execution>
@@ -57,15 +56,14 @@
                         <configuration>
                             <groupId>org.opencv</groupId>
                             <artifactId>opencv</artifactId>
-                            <version>${opencv.version}</version>
-                            <classifier>win</classifier>
+                            <version>${opencv.version.prefix}.${opencv.os}</version>
                             <packaging>jar</packaging>
-                            <file>${basedir}/src/test/resources/lib/opencv-3.2.0-win.jar</file>
-                            <pomFile>${basedir}/src/test/resources/lib/opencv-3.2.0.pom</pomFile>
+                            <file>${basedir}/src/test/resources/lib/opencv-3.2.0.win.jar</file>
+                            <pomFile>${basedir}/src/test/resources/lib/opencv-3.2.0.win.pom</pomFile>
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>           
+            </plugin>
         </plugins>
     </build>
 
