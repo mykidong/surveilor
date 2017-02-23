@@ -14,6 +14,7 @@
 		<dependency>
             <groupId>io.shunters.surveilor</groupId>
             <artifactId>surveilor-common</artifactId>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
