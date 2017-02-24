@@ -7,7 +7,9 @@ import java.io.Serializable;
  */
 public class VideoStream implements Serializable {
 
-    private String streamId;
+    private String channelId;
+    private String location;
+
     private byte[] imageBytes;
     private int imageWidth;
     private int imageHeight;
@@ -16,59 +18,48 @@ public class VideoStream implements Serializable {
     private long frameTimestamp;
     private long sequenceNo;
 
-    public String getStreamId() {
-        return streamId;
+
+    public VideoStream(String channelId, String location, byte[] imageBytes, int imageWidth, int imageHeight, String imageType, long frameTimestamp, long sequenceNo)
+    {
+        this.channelId = channelId;
+        this.location = location;
+        this.imageBytes = imageBytes;
+        this.imageWidth = imageWidth;
+        this.imageHeight = imageHeight;
+        this.imageType = imageType;
+        this.frameTimestamp = frameTimestamp;
+        this.sequenceNo = sequenceNo;
     }
 
-    public void setStreamId(String streamId) {
-        this.streamId = streamId;
+    public String getChannelId() {
+        return channelId;
+    }
+
+    public String getLocation() {
+        return location;
     }
 
     public byte[] getImageBytes() {
         return imageBytes;
     }
 
-    public void setImageBytes(byte[] imageBytes) {
-        this.imageBytes = imageBytes;
-    }
-
     public int getImageWidth() {
         return imageWidth;
-    }
-
-    public void setImageWidth(int imageWidth) {
-        this.imageWidth = imageWidth;
     }
 
     public int getImageHeight() {
         return imageHeight;
     }
 
-    public void setImageHeight(int imageHeight) {
-        this.imageHeight = imageHeight;
-    }
-
     public String getImageType() {
         return imageType;
-    }
-
-    public void setImageType(String imageType) {
-        this.imageType = imageType;
     }
 
     public long getFrameTimestamp() {
         return frameTimestamp;
     }
 
-    public void setFrameTimestamp(long frameTimestamp) {
-        this.frameTimestamp = frameTimestamp;
-    }
-
     public long getSequenceNo() {
         return sequenceNo;
-    }
-
-    public void setSequenceNo(long sequenceNo) {
-        this.sequenceNo = sequenceNo;
     }
 }

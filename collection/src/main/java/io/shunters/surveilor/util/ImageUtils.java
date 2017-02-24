@@ -3,6 +3,8 @@ package io.shunters.surveilor.util;
 import org.opencv.core.Mat;
 
 import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.color.ColorSpace;
 import java.awt.image.BufferedImage;
 import java.awt.image.ColorConvertOp;
@@ -67,5 +69,17 @@ public class ImageUtils {
         System.arraycopy(b, 0, targetPixels, 0, b.length);
 
         return image;
+    }
+
+    public static void displayImage(Image image) {
+        ImageIcon icon = new ImageIcon(image);
+        JFrame frame = new JFrame();
+        frame.setLayout(new FlowLayout());
+        frame.setSize(image.getWidth(null) + 50, image.getHeight(null) + 50);
+        JLabel lbl = new JLabel();
+        lbl.setIcon(icon);
+        frame.add(lbl);
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 }

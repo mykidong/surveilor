@@ -72,21 +72,23 @@ public class VideoStreamReader implements Runnable {
                 videoCapture.read(mat);
                 sequenceNo++;
 
+                if(mat.width() == 0 || mat.height() == 0)
+                {
+                    log.error("mat width or height must be greater than zero!!!");
+
+                    break;
+                }
+
                 BufferedImage image = ImageUtils.mat2BufferedImage(mat);
                 byte[] imageBytes = ImageUtils.imageToBytes(image, imageType);
                 long frameTimestamp = (long) videoCapture.get(Videoio.CAP_PROP_POS_MSEC);
 
-                // TODO: stream id.
-                String streamId = null;
+                // channel id.
+                String channelId = "" + this.location.hashCode();
+                if(this.location.contains("/"))
+                    channelId = this.location.substring(this.location.lastIndexOf('/') + 1) + "_" + channelId;
 
-                VideoStream stream = new VideoStream();
-                stream.setStreamId(streamId);
-                stream.setImageBytes(imageBytes);
-                stream.setFrameTimestamp(frameTimestamp);
-                stream.setSequenceNo(sequenceNo);
-                stream.setImageWidth((int) frameSize.width);
-                stream.setImageHeight((int) frameSize.height);
-
+                VideoStream stream = new VideoStream(channelId, location, imageBytes, (int) frameSize.width, (int) frameSize.height, imageType, frameTimestamp, sequenceNo);
                 streams.add(stream);
 
                 count++;
@@ -104,6 +106,7 @@ public class VideoStreamReader implements Runnable {
             }
         }
 
+        this.running = false;
         this.videoCapture.release();
         mat.release();
     }

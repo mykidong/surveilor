@@ -63,6 +63,14 @@
             <groupId>org.apache.avro</groupId>
             <artifactId>avro-mapred</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.esotericsoftware</groupId>
+            <artifactId>kryo-shaded</artifactId>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
