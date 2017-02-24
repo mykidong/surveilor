@@ -1,0 +1,16 @@
+{
+   "type":"record",
+   "name":"VideoStream",
+   "namespace":"io.shunters.surveilor.domain.avro",
+   "fields":[
+      { "name":"channelId", "type":"string" },
+      { "name":"location", "type":"string" },
+      { "name":"imageBytes", "type":"bytes" },
+      { "name":"imageLength", "type":"int" },
+      { "name":"imageWidth", "type":"int" },
+      { "name":"imageHeight", "type":"int" },
+      { "name":"imageType", "type":"string" },
+      { "name":"frameTimestamp", "type":"long" },
+      { "name":"sequenceNo", "type":"long" }
+   ]
+}

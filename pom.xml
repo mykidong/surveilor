@@ -35,6 +35,7 @@
         <metrics.version>3.1.0</metrics.version>
         <guava.version>18.0</guava.version>
         <kryo.version>3.0.0</kryo.version>
+        <snappy-java.version>1.1.2.4</snappy-java.version>
 
         <junit.version>4.11</junit.version>
         <slf4j.version>1.6.6</slf4j.version>
@@ -405,6 +406,11 @@
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>
                 <version>${guava.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.xerial.snappy</groupId>
+                <artifactId>snappy-java</artifactId>
+                <version>${snappy-java.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

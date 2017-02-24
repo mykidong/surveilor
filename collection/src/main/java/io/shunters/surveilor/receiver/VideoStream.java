@@ -7,10 +7,13 @@ import java.io.Serializable;
  */
 public class VideoStream implements Serializable {
 
+    public static final String AVRO_SCHEMA = "/META-INF/avro/video-stream.avsc";
+
     private String channelId;
     private String location;
 
     private byte[] imageBytes;
+    private int imageLength;
     private int imageWidth;
     private int imageHeight;
     private String imageType;
@@ -24,11 +27,16 @@ public class VideoStream implements Serializable {
         this.channelId = channelId;
         this.location = location;
         this.imageBytes = imageBytes;
+        this.imageLength = this.imageBytes.length;
         this.imageWidth = imageWidth;
         this.imageHeight = imageHeight;
         this.imageType = imageType;
         this.frameTimestamp = frameTimestamp;
         this.sequenceNo = sequenceNo;
+    }
+
+    public int getImageLength() {
+        return imageLength;
     }
 
     public String getChannelId() {

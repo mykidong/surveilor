@@ -71,6 +71,14 @@
             <groupId>com.esotericsoftware</groupId>
             <artifactId>kryo-shaded</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka_2.10</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.xerial.snappy</groupId>
+            <artifactId>snappy-java</artifactId>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
@@ -83,5 +91,37 @@
             </plugin>
         </plugins>
     </build>
+    <profiles>
+        <profile>
+            <id>local</id>
+            <properties>
+                <surveilor.bootstrap.servers>localhost:9092</surveilor.bootstrap.servers>
+                <surveilor.log.dir>/data01/log/surveilor</surveilor.log.dir>
+            </properties>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <surveilor.bootstrap.servers>localhost:9092</surveilor.bootstrap.servers>
+                <surveilor.log.dir>/data01/log/surveilor</surveilor.log.dir>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <id>prod</id>
+            <properties>
+                <surveilor.bootstrap.servers>localhost:9092</surveilor.bootstrap.servers>
+                <surveilor.log.dir>/data01/log/surveilor</surveilor.log.dir>
+            </properties>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+        </profile>
+    </profiles>
 
 </project>

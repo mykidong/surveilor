@@ -1,9 +1,10 @@
 package io.shunters.surveilor.component;
 
+import io.shunters.surveilor.api.component.PutToKafkaHandler;
 import io.shunters.surveilor.receiver.VideoConfiguration;
 import io.shunters.surveilor.receiver.VideoStream;
 import io.shunters.surveilor.receiver.VideoStreamReceiver;
-import io.shunters.surveilor.util.ImageUtils;
+import io.shunters.surveilor.util.SpringContextSingleton;
 import org.apache.log4j.xml.DOMConfigurator;
 import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaPairRDD;
@@ -25,9 +26,6 @@ import org.springframework.beans.factory.config.PropertiesFactoryBean;
 import org.springframework.core.io.ClassPathResource;
 import scala.Tuple2;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -103,6 +101,9 @@ public class VideoStreamReceiverTestSkip {
             @Override
             public void call(Iterator<Tuple2<String, VideoStream>> iter) throws Exception {
 
+                PutToKafkaHandler<VideoStream> putToKafkaHandler =
+                        SpringContextSingleton.getInstance("classpath*:/META-INF/spring/put-frame-to-kafka/*-context.xml").getBean("produceToKafkaHandler", PutToKafkaHandler.class);
+
                 int count = 0;
 
                 while (iter.hasNext()) {
@@ -110,17 +111,17 @@ public class VideoStreamReceiverTestSkip {
                     String channelId = t._1;
                     VideoStream stream = t._2;
 
-                    // TODO: Kafka 로 Frame 관련 VideoStream 전송.
-
+                    // Kafka 로 Frame 관련 VideoStream 전송.
+                    putToKafkaHandler.put(stream);
 
                     // Test 목적으로 image 를 저장해봄.
-                    byte[] imageBytes = stream.getImageBytes();
-                    BufferedImage image = ImageUtils.bytesToImage(imageBytes);
-
-                    File outputfile = new File("target/" + channelId + "_" + count + "." + stream.getImageType());
-                    ImageIO.write(image, stream.getImageType(), outputfile);
-
-                    count++;
+//                    byte[] imageBytes = stream.getImageBytes();
+//                    BufferedImage image = ImageUtils.bytesToImage(imageBytes);
+//
+//                    File outputfile = new File("target/" + channelId + "_" + count + "." + stream.getImageType());
+//                    ImageIO.write(image, stream.getImageType(), outputfile);
+//
+//                    count++;
                 }
             }
         }
