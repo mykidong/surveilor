@@ -1,6 +1,7 @@
 package io.shunters.surveilor.receiver;
 
 import io.shunters.surveilor.util.ImageUtils;
+import io.shunters.surveilor.util.VideoStreamUtils;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.core.Size;
@@ -84,9 +85,7 @@ public class VideoStreamReader implements Runnable {
                 long frameTimestamp = (long) videoCapture.get(Videoio.CAP_PROP_POS_MSEC);
 
                 // channel id.
-                String channelId = "" + this.location.hashCode();
-                if(this.location.contains("/"))
-                    channelId = this.location.substring(this.location.lastIndexOf('/') + 1) + "_" + channelId;
+                String channelId = VideoStreamUtils.getChannelId(location);
 
                 VideoStream stream = new VideoStream(channelId, location, imageBytes, (int) frameSize.width, (int) frameSize.height, imageType, frameTimestamp, sequenceNo);
                 streams.add(stream);

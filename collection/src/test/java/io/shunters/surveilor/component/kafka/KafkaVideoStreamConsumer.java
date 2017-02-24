@@ -2,6 +2,7 @@ package io.shunters.surveilor.component.kafka;
 
 import io.shunters.surveilor.receiver.VideoStream;
 import io.shunters.surveilor.util.Log4jConfigurer;
+import io.shunters.surveilor.util.VideoStreamUtils;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
@@ -60,9 +61,7 @@ public class KafkaVideoStreamConsumer {
 
 		for(String location : locations) {
 			// channel id.
-			String channelId = "" + location.hashCode();
-			if (location.contains("/"))
-				channelId = location.substring(location.lastIndexOf('/') + 1) + "_" + channelId;
+            String channelId = VideoStreamUtils.getChannelId(location);
 
 			new Consumer(props, channelId).start();
 		}
