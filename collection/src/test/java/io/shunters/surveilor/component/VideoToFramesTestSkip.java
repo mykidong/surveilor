@@ -16,6 +16,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferByte;
+import java.util.Date;
 import java.util.Properties;
 
 /**
@@ -80,7 +81,10 @@ public class VideoToFramesTestSkip {
         while (videoCapture.read(mat)) {
             frames++;
 
-            if (frames == 1000) {
+            if (frames == 1200) {
+                long timestamp = (long) videoCapture.get(Videoio.CAP_PROP_POS_MSEC);
+                System.out.println("current video ts: [" + new Date(timestamp).toString() + "]");
+
                 // display image.
                 displayImage(mat2BufferedImage(mat));
 
