@@ -33,7 +33,7 @@ public class VideoStreamReceiver extends Receiver<VideoStream> {
         this.streamReaderMap = new HashMap<>();
         for(String location : locations)
         {
-            VideoStreamReader reader = new VideoStreamReader(this, location, this.configuration.getStoreBatchSize(), this.configuration.getSamplingSize(), this.configuration.getImageType());
+            VideoStreamReader reader = new VideoStreamReader(this, location, this.configuration.getStoreBatchSize(), this.configuration.getSamplingRate(), this.configuration.getImageType());
             this.streamReaderMap.put(location, reader);
             new Thread(reader).start();
         }
