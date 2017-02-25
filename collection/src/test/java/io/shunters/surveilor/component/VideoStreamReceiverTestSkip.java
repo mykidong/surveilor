@@ -130,7 +130,7 @@ public class VideoStreamReceiverTestSkip {
 
     public static class StreamsToPair implements PairFlatMapFunction<Iterator<VideoStream>, String, VideoStream> {
         @Override
-        public Iterable<Tuple2<String, VideoStream>> call(Iterator<VideoStream> videoStreamIterator) throws Exception {
+        public Iterator<Tuple2<String, VideoStream>> call(Iterator<VideoStream> videoStreamIterator) throws Exception {
 
             List<Tuple2<String, VideoStream>> tupleList = new ArrayList<>();
 
@@ -141,7 +141,7 @@ public class VideoStreamReceiverTestSkip {
             }
 
 
-            return tupleList;
+            return tupleList.iterator();
         }
     }
 

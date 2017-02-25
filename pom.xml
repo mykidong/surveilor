@@ -16,16 +16,16 @@
 
         <opencv.version.prefix>3.2.0</opencv.version.prefix>
         <spring.version>4.2.6.RELEASE</spring.version>
-        <scala.version>2.10.4</scala.version>
-        <scala.binary.version>2.10</scala.binary.version>
-        <spark.version>1.6.2</spark.version>
+        <scala.version>2.11.4</scala.version>
+        <scala.binary.version>2.11</scala.binary.version>
+        <spark.version>2.1.0</spark.version>
         <hadoop.version>2.7.3</hadoop.version>
         <avro.version>1.7.7</avro.version>
         <elasticsearch.version>5.2.1</elasticsearch.version>
-        <kafka.version>0.10.0.0</kafka.version>
+        <kafka.version>0.10.2.0</kafka.version>
         <zookeeper.version>3.4.8</zookeeper.version>
         <jackson.org.version>1.9.13</jackson.org.version>
-        <jackson.com.version>2.8.1</jackson.com.version>
+        <jackson.com.version>2.6.5</jackson.com.version>
         <commons-lang.version>2.6</commons-lang.version>
         <commons-codec.version>1.4</commons-codec.version>
         <commons-vfs.version>1.0</commons-vfs.version>
@@ -137,12 +137,17 @@
             </dependency>
             <dependency>
                 <groupId>org.apache.spark</groupId>
-                <artifactId>spark-mllib_${scala.binary.version}</artifactId>
+                <artifactId>spark-streaming_${scala.binary.version}</artifactId>
                 <version>${spark.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.spark</groupId>
-                <artifactId>spark-streaming-kafka_${scala.binary.version}</artifactId>
+                <artifactId>spark-streaming-kafka-0-10_${scala.binary.version}</artifactId>
+                <version>${spark.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.spark</groupId>
+                <artifactId>spark-mllib_${scala.binary.version}</artifactId>
                 <version>${spark.version}</version>
             </dependency>
             <dependency>
@@ -192,7 +197,7 @@
             </dependency>
             <dependency>
                 <groupId>org.apache.kafka</groupId>
-                <artifactId>kafka_2.10</artifactId>
+                <artifactId>kafka_${scala.binary.version}</artifactId>
                 <version>${kafka.version}</version>
             </dependency>
             <dependency>

@@ -71,6 +71,8 @@ public class KafkaAvroVideoStreamSerializer implements Serializer<VideoStream> {
             byte[] avroBytes = out.toByteArray();
             out.close();
 
+            //log.info("avroBytes: {}", avroBytes.length);
+
             return avroBytes;
         }
         catch (Exception e)
