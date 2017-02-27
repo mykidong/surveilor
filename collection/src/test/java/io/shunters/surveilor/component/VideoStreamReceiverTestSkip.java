@@ -75,7 +75,7 @@ public class VideoStreamReceiverTestSkip {
 
         VideoConfiguration configuration = new VideoConfiguration();
         configuration.setImageType("jpg");
-        configuration.setSamplingRate(15);
+        configuration.setSamplingInterval(15);
         configuration.setStoreBatchSize(10);
         configuration.setLocations(locations);
 

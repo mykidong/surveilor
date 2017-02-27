@@ -30,16 +30,16 @@ public class VideoStreamReader implements Runnable {
     private String location;
     private VideoStreamReceiver receiver;
     private int storeBatchSize;
-    private int samplingRate;
+    private int samplingInterval;
     private String imageType;
     private VideoCapture videoCapture;
     private long sequenceNo = 0;
 
-    public VideoStreamReader(VideoStreamReceiver receiver, String location, int storeBatchSize, int samplingRate, String imageType) {
+    public VideoStreamReader(VideoStreamReceiver receiver, String location, int storeBatchSize, int samplingInterval, String imageType) {
         this.receiver = receiver;
         this.location = location;
         this.storeBatchSize = storeBatchSize;
-        this.samplingRate = samplingRate;
+        this.samplingInterval = samplingInterval;
         this.imageType = imageType;
     }
 
@@ -62,14 +62,14 @@ public class VideoStreamReader implements Runnable {
         int count = 0;
         while (running) {
             try {
-                // sampling rate - 1 를 skip 함.
-                for (int i = 0; i < this.samplingRate - 1; i++) {
+                // sampling interval - 1 를 skip 함.
+                for (int i = 0; i < this.samplingInterval - 1; i++) {
                     videoCapture.read(mat);
 
                     sequenceNo++;
                 }
 
-                // sampling rate - 1 의 frame 들을 skip 한 후 frame 얻음.
+                // sampling interval - 1 의 frame 들을 skip 한 후 frame 얻음.
                 videoCapture.read(mat);
                 sequenceNo++;
 

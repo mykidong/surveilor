@@ -10,7 +10,7 @@ public class VideoConfiguration implements Serializable {
 
     private List<String> locations;
     private int storeBatchSize;
-    private int samplingRate;
+    private int samplingInterval;
     String imageType;
 
     public int getStoreBatchSize() {
@@ -21,12 +21,12 @@ public class VideoConfiguration implements Serializable {
         this.storeBatchSize = storeBatchSize;
     }
 
-    public int getSamplingRate() {
-        return samplingRate;
+    public int getSamplingInterval() {
+        return samplingInterval;
     }
 
-    public void setSamplingRate(int samplingRate) {
-        this.samplingRate = samplingRate;
+    public void setSamplingInterval(int samplingInterval) {
+        this.samplingInterval = samplingInterval;
     }
 
     public String getImageType() {
