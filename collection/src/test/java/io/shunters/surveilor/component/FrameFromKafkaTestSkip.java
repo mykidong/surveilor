@@ -87,6 +87,15 @@ public class FrameFromKafkaTestSkip {
             topics.add(channelId);
         }
 
+
+        // TODO:
+        // Classification 을 위해 Trained 된 Model 을 Loading 함.
+        // Broadcast 하여 실시간 Prediction 에 사용.
+
+        // TrainedModel model = ...
+        // Broadcast<TrainedModel> broadcastModel = ssc.sparkContext().broadcast(model);
+
+
         final JavaInputDStream<ConsumerRecord<Integer, VideoStream>> stream =
                 KafkaUtils.createDirectStream(ssc, LocationStrategies.PreferConsistent(), ConsumerStrategies.<Integer, VideoStream>Subscribe(topics, kafkaParams));
 
