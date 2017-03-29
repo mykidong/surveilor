@@ -62,6 +62,21 @@
                             <pomFile>${basedir}/src/test/resources/lib/opencv-3.2.0.win.pom</pomFile>
                         </configuration>
                     </execution>
+                    <execution>
+                        <id>install-tensorflow-hadoop</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>install-file</goal>
+                        </goals>
+                        <configuration>
+                            <groupId>org.tensorflow</groupId>
+                            <artifactId>tensorflow-hadoop</artifactId>
+                            <version>1.0-SNAPSHOT-shaded-protobuf</version>
+                            <packaging>jar</packaging>
+                            <file>${basedir}/src/test/resources/lib/tensorflow-hadoop-1.0-SNAPSHOT-shaded-protobuf.jar</file>
+                            <pomFile>${basedir}/src/test/resources/lib/tensorflow-hadoop-1.0-SNAPSHOT-shaded-protobuf.pom</pomFile>
+                        </configuration>
+                    </execution>
                 </executions>
             </plugin>
         </plugins>
