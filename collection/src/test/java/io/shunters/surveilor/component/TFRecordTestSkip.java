@@ -41,7 +41,7 @@ public class TFRecordTestSkip {
         JavaSparkContext ctx = new JavaSparkContext(sparkConf);
         SQLContext sqlCtx = new SQLContext(ctx);
 
-        String output = "tfr-output";
+        String output = "target/tfr-output";
 
         // first, delete the output path.
         FileSystem fs = FileSystem.get(ctx.hadoopConfiguration());
